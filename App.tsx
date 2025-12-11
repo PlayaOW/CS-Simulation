@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { ReferenceManual } from './components/ReferenceManual';
+import { DigitalTextbook } from './components/modules/DigitalTextbook';
 import { BitFlipper } from './components/modules/BitFlipper';
 import { GateLogic } from './components/modules/GateLogic';
 import { CombinationalCircuit } from './components/modules/CombinationalCircuit';
 import { SequentialLogic } from './components/modules/SequentialLogic';
 import { MiniCpu } from './components/modules/MiniCpu';
+import { Lc3Datapath } from './components/modules/Lc3Datapath';
+import { AsmDecoder } from './components/modules/AsmDecoder';
+import { StackVisualizer } from './components/modules/StackVisualizer';
 import { Lc3MemoryMap } from './components/modules/Lc3MemoryMap';
 import { ModuleId } from './types';
 import { Terminal } from 'lucide-react';
 
 const App: React.FC = () => {
-  const [activeModule, setActiveModule] = useState<ModuleId>(ModuleId.BIT_FLIPPER);
+  const [activeModule, setActiveModule] = useState<ModuleId>(ModuleId.DIGITAL_TEXTBOOK);
 
   const renderModule = () => {
     switch (activeModule) {
+      case ModuleId.DIGITAL_TEXTBOOK:
+        return <DigitalTextbook onNavigate={setActiveModule} />;
       case ModuleId.BIT_FLIPPER:
         return <BitFlipper />;
       case ModuleId.GATE_LOGIC:
@@ -25,10 +31,16 @@ const App: React.FC = () => {
         return <SequentialLogic />;
       case ModuleId.MINI_CPU:
         return <MiniCpu />;
+      case ModuleId.LC3_DATAPATH:
+        return <Lc3Datapath />;
+      case ModuleId.ASM_DECODER:
+        return <AsmDecoder />;
+      case ModuleId.STACK_VISUALIZER:
+        return <StackVisualizer />;
       case ModuleId.LC3_MEMORY_MAP:
         return <Lc3MemoryMap />;
       default:
-        return <BitFlipper />;
+        return <DigitalTextbook onNavigate={setActiveModule} />;
     }
   };
 
@@ -45,7 +57,7 @@ const App: React.FC = () => {
             </div>
             <h1 className="text-xl font-bold tracking-tight text-white">
               <span className="text-neon-cyan">SYS</span>.PLAYGROUND
-              <span className="ml-2 text-xs font-mono text-slate-500 border border-slate-700 px-2 py-0.5 rounded">v1.2.0</span>
+              <span className="ml-2 text-xs font-mono text-slate-500 border border-slate-700 px-2 py-0.5 rounded">v1.3.0</span>
             </h1>
           </div>
           <div className="hidden md:flex items-center gap-4 text-xs font-mono text-slate-400">
@@ -64,7 +76,9 @@ const App: React.FC = () => {
         </div>
 
         {/* Reference Manual Floating Panel */}
-        <ReferenceManual activeModule={activeModule} />
+        {activeModule !== ModuleId.DIGITAL_TEXTBOOK && (
+          <ReferenceManual activeModule={activeModule} />
+        )}
 
         {/* Decorative Grid Background */}
         <div className="absolute inset-0 pointer-events-none z-0 opacity-10" 

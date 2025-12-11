@@ -13,6 +13,11 @@ interface ReferenceContent {
 }
 
 const MANUAL_CONTENT: Record<ModuleId, ReferenceContent> = {
+  [ModuleId.DIGITAL_TEXTBOOK]: {
+    title: "The Silicon Chronicles",
+    chapter: "Introduction",
+    focus: "Interactive Textbook mode. Select chapters from the sidebar."
+  },
   [ModuleId.BIT_FLIPPER]: {
     title: "Data Representation",
     chapter: "Chapter 2: Bits, Data Types, and Operations",
@@ -38,10 +43,25 @@ const MANUAL_CONTENT: Record<ModuleId, ReferenceContent> = {
     chapter: "Chapter 4: The Von Neumann Model",
     focus: "Sections 4.1 (Basic Components) and 4.3 (Instruction Processing). Focus on the Fetch-Decode-Execute cycle logic."
   },
+  [ModuleId.LC3_DATAPATH]: {
+    title: "The LC-3 Datapath",
+    chapter: "Chapter 5: The LC-3",
+    focus: "Section 5.1 (The ISA) and 5.2 (Operate Instructions). Watch how data moves on the Bus during each phase."
+  },
+  [ModuleId.ASM_DECODER]: {
+    title: "Assembly Language",
+    chapter: "Chapter 6 & 7",
+    focus: "Section 5.1.3 (Instruction Formats). Pay attention to the Opcode (bits 15-12) and Addressing Modes."
+  },
   [ModuleId.LC3_MEMORY_MAP]: {
     title: "I/O & Traps",
     chapter: "Chapter 8 (I/O) & Chapter 9 (Traps)",
     focus: "The Memory Map (x0000-xFFFF). See Fig 8.1 for Device Registers (KBSR, KBDR) and Table A.2 for Trap Vectors."
+  },
+  [ModuleId.STACK_VISUALIZER]: {
+    title: "Stack & Functions",
+    chapter: "Chapter 10 (Stack) & Chapter 14 (C Functions)",
+    focus: "Section 10.2 (Stack Protocol) and 14.3 (Activation Records). R6 is the Stack Pointer."
   }
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleId, NavItem } from '../types';
-import { Cpu, Binary, Info, FileCode, GitMerge, RefreshCw, Map } from 'lucide-react';
+import { Cpu, Binary, Info, FileCode, GitMerge, RefreshCw, Map, Activity, Layers, Code, BookOpen } from 'lucide-react';
 
 interface SidebarProps {
   activeModule: ModuleId;
@@ -8,6 +8,12 @@ interface SidebarProps {
 }
 
 const NAV_ITEMS: NavItem[] = [
+  {
+    id: ModuleId.DIGITAL_TEXTBOOK,
+    label: "The Silicon Chronicles",
+    icon: BookOpen,
+    description: "Interactive Textbook",
+  },
   {
     id: ModuleId.BIT_FLIPPER,
     label: "Data Representation",
@@ -34,15 +40,33 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     id: ModuleId.MINI_CPU,
-    label: "CPU Architecture",
+    label: "Mini Architecture",
     icon: FileCode,
     description: "Registers, RAM, Assembly",
+  },
+  {
+    id: ModuleId.LC3_DATAPATH,
+    label: "LC-3 Datapath",
+    icon: Activity,
+    description: "Fetch-Decode-Execute",
+  },
+  {
+    id: ModuleId.ASM_DECODER,
+    label: "Assembly Decoder",
+    icon: Code,
+    description: "Instruction Parsing",
   },
   {
     id: ModuleId.LC3_MEMORY_MAP,
     label: "LC-3 Memory Map",
     icon: Map,
     description: "I/O & Address Space",
+  },
+  {
+    id: ModuleId.STACK_VISUALIZER,
+    label: "Runtime Stack",
+    icon: Layers,
+    description: "Stack Frames & Functions",
   },
 ];
 
@@ -96,7 +120,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeModule, onSelectModule }
              <span className="text-xs font-bold uppercase">Did you know?</span>
            </div>
            <p className="text-xs text-slate-400 leading-relaxed">
-             Memory Mapped I/O means talking to a keyboard is the same as writing to a memory address.
+             The LC-3 is a von Neumann machine, meaning it stores both instructions and data in the same memory.
            </p>
         </div>
       </div>
