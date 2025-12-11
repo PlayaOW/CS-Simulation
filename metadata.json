@@ -1,4 +1,5 @@
 {
   "name": "The Silicon Playground",
-  "description": "A retro-futuristic interactive visualization of computing systems concepts, from bits to logic gates."
+  "description": "A retro-futuristic interactive visualization of computing systems concepts, from bits to logic gates.",
+  "requestFramePermissions": []
 }
